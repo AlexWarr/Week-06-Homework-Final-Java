@@ -29,5 +29,8 @@ public class Card {
 		this.value = value;
 	}
 	
+	public static void describe(String face, int value) {
+		System.out.println(face + " has a value of " + value);
+	}
 
 }

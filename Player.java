@@ -50,5 +50,16 @@ public class Player {
 		this.hand = hand;
 	}
 
+	public static void describe(String name, int score, HashMap<String,Integer> hand) {
+		System.out.println(name + " currently has " + score + " points");
+		System.out.println(name + " has the following cards in their hand:");
+		Card temp = new Card();
+		for (String key : hand.keySet()) {
+			temp.setFace(key);
+			temp.setValue(hand.get(key));
+			Card.describe(temp.getFace(),temp.getValue());
+		}
+	}
+
 
 }

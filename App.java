@@ -85,18 +85,18 @@ public class App {
 	
 	public static Deck deckBuilder() {
 		//creates a HashMap of all faces and values of a regular playing deck minus the jokers
-		String[] royals = new String[]{"J","Q","K","A"};
-		String[] cases = new String[] {"h","c","s","d"};
+		String[] royals = new String[]{"Jack","Queen","King","Ace"};
+		String[] cases = new String[] {"Hearts","Clubs","Spades","Diamonds"};
 		HashMap<String,Integer> stack = new HashMap<String,Integer>();
 		for(int i = 2; i < 15; i++) {
 			for (int j = 0; j < 4; j++) {
 				String temp = "";
 				if (i < 11) {
-					temp = i+cases[j];
+					temp = i+ " of " + cases[j];
 					stack.put(temp, i);
 					}
 				if (i > 10) {
-					temp = royals[i-11]+cases[j];
+					temp = royals[i-11]+ " of " +cases[j];
 					stack.put(temp, i);
 					}		
 				}
@@ -227,10 +227,14 @@ public class App {
 		System.out.println("The final scores are: \n   " +player1.getName() + ": " + player1.getScore() +"\n   " + player2.getName() + ": " + player2.getScore());
 		if ( player1.getScore() == player2.getScore()) {
 			System.out.println("This round was a draw. Better luck next time.");
+			Player.describe(player1.getName(), player1.getScore(), player1.getHand());
+			Player.describe(player2.getName(), player2.getScore(), player2.getHand());
 		} else if ( player1.getScore() > player2.getScore()) {
 			System.out.println(player1.getName() + " wins!\n");
+			Player.describe(player1.getName(), player1.getScore(), player1.getHand());
 		} else if (player1.getScore() < player2.getScore()) {
 			System.out.println(player2.getName() + " wins!\n");
+			Player.describe(player2.getName(), player2.getScore(), player2.getHand());
 		}
 	}
 
